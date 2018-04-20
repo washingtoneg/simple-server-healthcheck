@@ -22,3 +22,17 @@ simple-server-healthcheck
         $ rbenv install 2.3.5
       ```
 
+### Getting Started
+
+  1. Clone the repo:
+
+      ```
+        $ git clone git@github.com:washingtoneg/simple-server-healthcheck.git
+      ```
+
+  1. Run `simple-server-healthcheck`:
+
+      ```
+        $ cd simple-server-healthcheck
+        $ bundle exec simple-server-healthcheck
+      ```
