@@ -37,14 +37,17 @@ simple-server-healthcheck
         $ bundle exec simple-server-healthcheck
       ```
 
+### Contributing
+
+  1. Enable the git pre-commit hook to run test suite before commiting code
+
+      ```
+        $ ln -s -f ../../git-hooks/pre-commit .git/hooks/pre-commit
+      ```
+
 ### TODOs
 
 Add bare minimum features:
-  1. Development Support
-      - [ ] Communicate dependecies with Gemfile/Gemfile.lock
-      - [ ] Use [`rubocop`](https://github.com/bbatsov/rubocop) for linting (to keep myself in line)
-      - [ ] Use [`rspec`](https://github.com/rspec/rspec) testing (try to TDD)
-      - [ ] Use git pre-commit hook for low-fidelity CI
   1. Script Utility (meta)
       - [ ] Make it a [`thor`](https://github.com/erikhuda/thor) CLI app
       - [ ] Sanitize input parameters
@@ -66,3 +69,10 @@ Add extra features:
       - [ ] Put it in a container
   1. Integration Testing
       - [ ] Build a test rig
+
+Done:
+  1. Development Support
+      - [X] Communicate dependecies with Gemfile/Gemfile.lock
+      - [X] Use [`rubocop`](https://github.com/bbatsov/rubocop) for linting (to keep myself in line)
+      - [X] Use [`rspec`](https://github.com/rspec/rspec) testing (try to TDD)
+      - [X] Use git pre-commit hook for low-fidelity CI
