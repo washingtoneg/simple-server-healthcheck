@@ -49,9 +49,9 @@ simple-server-healthcheck
 
 Add bare minimum features:
   1. Development Support
-      - [ ] Communicate dependecies with Gemfile/Gemfile.lock
-      - [ ] Use [`rubocop`](https://github.com/bbatsov/rubocop) for linting (to keep myself in line)
-      - [ ] Use [`rspec`](https://github.com/rspec/rspec) testing (try to TDD)
+      - [X] Communicate dependecies with Gemfile/Gemfile.lock
+      - [X] Use [`rubocop`](https://github.com/bbatsov/rubocop) for linting (to keep myself in line)
+      - [X] Use [`rspec`](https://github.com/rspec/rspec) testing (try to TDD)
       - [X] Use git pre-commit hook for low-fidelity CI
   1. Script Utility (meta)
       - [ ] Make it a [`thor`](https://github.com/erikhuda/thor) CLI app
