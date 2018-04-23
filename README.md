@@ -48,10 +48,7 @@ simple-server-healthcheck
 
 Add bare minimum features:
   1. Script Utility (meta)
-      - [ ] Make connection attempt to provided list of servers
       - [ ] Parse timestamp from provided HTML at /health endpoint
-      - [ ] An unreachable server is a bad server
-      - [ ] Provide json array output
   1. Script Utility
       - [ ] Accept a list one or more server hosts/ports (server-1.example.com:8080, server-2.example.com:7070)
       - [ ] To check the health of a single server, query the server's `/health` endpoint,
@@ -71,6 +68,9 @@ Add extra features:
 
 Done:
   1. Script Utility (meta)
+      - [X] Provide json ~~array~~ output
+      - [X] An unreachable server is a bad server
+      - [X] Make connection attempt to provided list of servers
       - [X] Sanitize input parameters
       - [X] See if TDD is viable (not right now)
       - [X] Make it a [`thor`](https://github.com/erikhuda/thor) CLI app
