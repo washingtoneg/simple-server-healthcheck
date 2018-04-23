@@ -5,6 +5,10 @@ simple-server-healthcheck
 
 `simple-server-healthcheck` is a Ruby command line program that checks the health of a pool of HTTP servers, then exits.
 
+### Assumptions
+
+  * Each server responds to requests GET requests to `/health` with HTML in [this format](https://github.com/washingtoneg/simple-server-healthcheck/blob/master/test/health)
+
 
 ### System dependencies
 
@@ -44,9 +48,23 @@ simple-server-healthcheck
         $ ln -s -f ../../git-hooks/pre-commit .git/hooks/pre-commit
       ```
 
-### TODOs
+### Testing
 
-Add bare minimum features:
+Start up a simple web server locally for testing `simple-server-health`. There is a stub of the expected [server response](https://github.com/washingtoneg/simple-server-healthcheck/blob/master/test/health) located in the `test/` directory. You can serve up this file using a (Python) SimpleHTTPServer webserver in the background by running the following:
+
+  ```
+    $ port=7070
+    $ cd test
+    $ nohup python -m SimpleHTTPServer $port >/tmp/server-${port}.log 2>&1 &
+  ```
+
+You should now be able to run `simple-server-healthcheck` against the server:
+
+  ```
+    $ bundle exec bin/simple-server-healthcheck health --age 10 --servers localhost:7070
+  ```
+
+### TODOs
 
 Add extra features:
   1. Development Support
@@ -59,6 +77,8 @@ Add extra features:
       - [ ] Build a test rig
 
 Done:
+
+Add bare minimum features:
   1. Script Utility (meta)
       - [X] Parse timestamp from provided HTML at /health endpoint
       - [X] Server is unhealthy is /health is not found
