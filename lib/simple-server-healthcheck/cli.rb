@@ -64,10 +64,10 @@ module SimpleServerHealthcheck
 
     def server_health
       last_updated_timestamp = Time.parse(page).strftime('%s').to_i
-      if current_time.to_i - last_updated_timestamp.to_i > (@age * 60)
-        update_health_list 'unhealthy'
-      else
+      if current_time.to_i - last_updated_timestamp.to_i < (@age * 60)
         update_health_list 'healthy'
+      else
+        update_health_list 'unhealthy'
       end
     rescue Errno::ECONNREFUSED, OpenURI::HTTPError
       update_health_list 'unhealthy'
