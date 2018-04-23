@@ -39,12 +39,26 @@ module SimpleServerHealthcheck
       raise host_port_error_message unless SERVER_REGEX =~ @server
     end
 
+    def current_time
+      Time.now.strftime('%s').to_i
+    end
+
     def host_port_error_message
       "#{@server} should be in the format HOST:PORT"
     end
 
+    def page
+      Nokogiri::HTML(open("http://#{@server}/#{HEALTH_ENDPOINT}")).css('b').text
+    end
+
     def server_health
-      Nokogiri::HTML(open("http://#{@server}/#{HEALTH_ENDPOINT}"))
+      last_updated_text = page
+      last_updated_timestamp = Time.parse(last_updated_text).strftime('%s').to_i
+      if current_time.to_i - last_updated_timestamp.to_i > (@age * 60)
+        update_health_list 'unhealthy'
+      else
+        update_health_list 'healthy'
+      end
     rescue Errno::ECONNREFUSED, OpenURI::HTTPError
       update_health_list 'unhealthy'
     end
