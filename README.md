@@ -48,6 +48,7 @@ simple-server-healthcheck
 
 Add bare minimum features:
   1. Script Utility (meta)
+      - [ ] Server is unhealthy is /health is not found
       - [ ] Parse timestamp from provided HTML at /health endpoint
   1. Script Utility
       - [ ] Accept a list one or more server hosts/ports (server-1.example.com:8080, server-2.example.com:7070)
