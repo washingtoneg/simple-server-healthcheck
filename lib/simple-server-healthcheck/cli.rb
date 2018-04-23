@@ -36,10 +36,10 @@ module SimpleServerHealthcheck
     attr_reader :age, :health_list, :server, :servers
 
     def check_host_port
-      raise host_port_error unless SERVER_REGEX =~ @server
+      raise host_port_error_message unless SERVER_REGEX =~ @server
     end
 
-    def host_port_error
+    def host_port_error_message
       "#{@server} should be in the format HOST:PORT"
     end
 
