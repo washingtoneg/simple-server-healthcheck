@@ -33,8 +33,7 @@ simple-server-healthcheck
   1. Run `simple-server-healthcheck`:
 
       ```
-        $ cd simple-server-healthcheck
-        $ bundle exec simple-server-healthcheck
+        $ bundle exec bin/simple-server-healthcheck
       ```
 
 ### Contributing
@@ -49,7 +48,7 @@ simple-server-healthcheck
 
 Add bare minimum features:
   1. Script Utility (meta)
-      - [ ] Make it a [`thor`](https://github.com/erikhuda/thor) CLI app
+      - [ ] See if TDD is viable
       - [ ] Sanitize input parameters
       - [ ] Parse timestamp from provided HTML at /health endpoint
       - [ ] An unreachable server is a bad server
@@ -71,6 +70,8 @@ Add extra features:
       - [ ] Build a test rig
 
 Done:
+  1. Script Utility (meta)
+      - [X] Make it a [`thor`](https://github.com/erikhuda/thor) CLI app
   1. Development Support
       - [X] Communicate dependecies with Gemfile/Gemfile.lock
       - [X] Use [`rubocop`](https://github.com/bbatsov/rubocop) for linting (to keep myself in line)
