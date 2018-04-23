@@ -64,6 +64,18 @@ You should now be able to run `simple-server-healthcheck` against the server:
     $ bundle exec bin/simple-server-healthcheck health --age 10 --servers localhost:7070
   ```
 
+Update the timestamp in test/health as your testing needs dictate:
+
+  ```diff
+     <head><title>Server Health</title></head>
+     <body>
+     <h1>Server Status</h1>
+    -<p>Last Updated: <b>Mon Apr 23 02:01:00 2018 EDT</b></p>
+    +<p>Last Updated: <b>Mon Apr 23 07:40:00 2018 EDT</b></p>
+     </body>
+     </html>
+  ```
+
 ### TODOs
 
 Add extra features:
