@@ -30,7 +30,7 @@ simple-server-healthcheck
         $ git clone git@github.com:washingtoneg/simple-server-healthcheck.git
       ```
 
-  1. Run `simple-server-healthcheck`:
+  1. Run `simple-server-healthcheck` for usage instructions:
 
       ```
         $ bundle exec bin/simple-server-healthcheck
@@ -47,8 +47,6 @@ simple-server-healthcheck
 ### TODOs
 
 Add bare minimum features:
-  1. Script Utility
-      - [ ] The tool is expected to be run once every 5 minutes. In other words: it should complete in less than 5 minutes
 
 Add extra features:
   1. Development Support
@@ -71,6 +69,7 @@ Done:
       - [X] See if TDD is viable (not right now)
       - [X] Make it a [`thor`](https://github.com/erikhuda/thor) CLI app
   1. Script Utility
+      - [X] The tool is expected to be run once every 5 minutes. In other words: it should complete in less than 5 minutes
       - [X] Output a list of servers that is unhealthy, along with any other diagnostic information you feel is useful.
       - [x] A server is defined to be healthy if and only its "Last Updated" timestamp is less than N minutes old (where N is a command-line argument to the program).
       - [X] Accept a list one or more server hosts/ports (server-1.example.com:8080, server-2.example.com:7070)
