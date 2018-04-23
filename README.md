@@ -48,7 +48,6 @@ simple-server-healthcheck
 
 Add bare minimum features:
   1. Script Utility (meta)
-      - [ ] See if TDD is viable
       - [ ] Sanitize input parameters
       - [ ] Parse timestamp from provided HTML at /health endpoint
       - [ ] An unreachable server is a bad server
@@ -62,6 +61,7 @@ Add bare minimum features:
 
 Add extra features:
   1. Development Support
+      - [ ] Use [`rspec`](https://github.com/rspec/rspec) testing (try to TDD)
       - [ ] Simple CI with Travis
       - [ ] Make this a contributable project
   1. Script Potability
@@ -71,9 +71,9 @@ Add extra features:
 
 Done:
   1. Script Utility (meta)
+      - [X] See if TDD is viable (not right now)
       - [X] Make it a [`thor`](https://github.com/erikhuda/thor) CLI app
   1. Development Support
       - [X] Communicate dependecies with Gemfile/Gemfile.lock
       - [X] Use [`rubocop`](https://github.com/bbatsov/rubocop) for linting (to keep myself in line)
-      - [X] Use [`rspec`](https://github.com/rspec/rspec) testing (try to TDD)
       - [X] Use git pre-commit hook for low-fidelity CI
