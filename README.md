@@ -48,7 +48,6 @@ simple-server-healthcheck
 
 Add bare minimum features:
   1. Script Utility (meta)
-      - [ ] Make connection attempt to provided list of servers
       - [ ] Parse timestamp from provided HTML at /health endpoint
       - [ ] An unreachable server is a bad server
       - [ ] Provide json array output
@@ -71,6 +70,7 @@ Add extra features:
 
 Done:
   1. Script Utility (meta)
+      - [X] Make connection attempt to provided list of servers
       - [X] Sanitize input parameters
       - [X] See if TDD is viable (not right now)
       - [X] Make it a [`thor`](https://github.com/erikhuda/thor) CLI app
