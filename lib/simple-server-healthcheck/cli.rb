@@ -8,7 +8,7 @@ module SimpleServerHealthcheck
   SERVER_REGEX = /[^\:]+:[0-9]{2,5}/
   TIMEOUT_SECONDS = (5 * 60)
   class CLI < Thor
-    desc 'health', 'get health of SERVERS less than AGE'
+    desc 'health', 'get health of SERVERS based on AGE'
     long_desc <<-LONGDESC
       Get the health information for a list of servers.
       Server arguments should be in host:port format (e.g. server-1.example.com:8080, server-2.example.com:7070)
