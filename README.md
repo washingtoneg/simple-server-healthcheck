@@ -75,6 +75,7 @@ Add extra features:
       - [ ] Put it in a container
   1. Integration Testing
       - [ ] Build a test rig
+      - [ ] Allow "Last Updated" timestamp test fixture to be programmatically generated
 
 Done:
 
