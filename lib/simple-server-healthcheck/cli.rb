@@ -8,7 +8,7 @@ module SimpleServerHealthcheck
   SERVER_REGEX = /[^\:]+:[0-9]{2,5}/
   TIMEOUT_SECONDS = (5 * 60)
   class CLI < Thor
-    desc 'health', 'get health of SERVERS less than AGE'
+    desc 'health', 'get health of SERVERS based on AGE'
     long_desc <<-LONGDESC
       Get the health information for a list of servers.
       Server arguments should be in host:port format (e.g. server-1.example.com:8080, server-2.example.com:7070)
@@ -19,7 +19,7 @@ module SimpleServerHealthcheck
     option :age, type: :numeric, required: true
     option :servers, type: :array, required: true
     def health
-      @age = options[:age]
+      @age = options[:age] * 60
       @servers = options[:servers]
       @server = ''
       @health_list = {}
@@ -64,10 +64,10 @@ module SimpleServerHealthcheck
 
     def server_health
       last_updated_timestamp = Time.parse(page).strftime('%s').to_i
-      if current_time.to_i - last_updated_timestamp.to_i > (@age * 60)
-        update_health_list 'unhealthy'
-      else
+      if current_time.to_i - last_updated_timestamp.to_i < @age
         update_health_list 'healthy'
+      else
+        update_health_list 'unhealthy'
       end
     rescue Errno::ECONNREFUSED, OpenURI::HTTPError
       update_health_list 'unhealthy'
