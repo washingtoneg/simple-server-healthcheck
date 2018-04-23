@@ -7,8 +7,8 @@
 #
 # To enable this hook, rename this file to "pre-commit".
 
-# Run rubocop
-rubocop .
+# Run rubocop and bundle-audit
+rubocop . && bundle-audit check --update
 if ! [ $? -eq 0 ]; then
   exit 1
 fi

@@ -45,7 +45,7 @@ module SimpleServerHealthcheck
 
     def server_health
       Nokogiri::HTML(open("http://#{@server}/#{HEALTH_ENDPOINT}"))
-    rescue Errno::ECONNREFUSED
+    rescue Errno::ECONNREFUSED, OpenURI::HTTPError
       update_health_list 'unhealthy'
     end
 
