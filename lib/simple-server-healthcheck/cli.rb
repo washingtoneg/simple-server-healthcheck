@@ -52,8 +52,7 @@ module SimpleServerHealthcheck
     end
 
     def server_health
-      last_updated_text = page
-      last_updated_timestamp = Time.parse(last_updated_text).strftime('%s').to_i
+      last_updated_timestamp = Time.parse(page).strftime('%s').to_i
       if current_time.to_i - last_updated_timestamp.to_i > (@age * 60)
         update_health_list 'unhealthy'
       else
