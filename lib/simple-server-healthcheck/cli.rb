@@ -1,10 +1,12 @@
 require 'nokogiri'
 require 'open-uri'
 require 'thor'
+require 'timeout'
 
 module SimpleServerHealthcheck
-  SERVER_REGEX = /[^\:]+:[0-9]{2,5}/
   HEALTH_ENDPOINT = 'health'.freeze
+  SERVER_REGEX = /[^\:]+:[0-9]{2,5}/
+  TIMEOUT_SECONDS = (5 * 60)
   class CLI < Thor
     desc 'health', 'get health of SERVERS less than AGE'
     long_desc <<-LONGDESC
@@ -22,12 +24,7 @@ module SimpleServerHealthcheck
       @server = ''
       @health_list = {}
 
-      servers.each do |server|
-        @server = server
-        check_host_port
-        server_health
-      end
-
+      iterate_over_server_list
       puts @health_list
     end
 
@@ -45,6 +42,20 @@ module SimpleServerHealthcheck
 
     def host_port_error_message
       "#{@server} should be in the format HOST:PORT"
+    end
+
+    def iterate_over_server_list
+      @servers.each do |server|
+        begin
+          Timeout.timeout(TIMEOUT_SECONDS) do
+            @server = server
+            check_host_port
+            server_health
+          end
+        rescue Timeout::Error
+          raise "Health check took longer than #{TIMEOUT_SECONDS} seconds"
+        end
+      end
     end
 
     def page
