@@ -19,7 +19,7 @@ module SimpleServerHealthcheck
     option :age, type: :numeric, required: true
     option :servers, type: :array, required: true
     def health
-      @age = options[:age]
+      @age = options[:age] * 60
       @servers = options[:servers]
       @server = ''
       @health_list = {}
@@ -64,7 +64,7 @@ module SimpleServerHealthcheck
 
     def server_health
       last_updated_timestamp = Time.parse(page).strftime('%s').to_i
-      if current_time.to_i - last_updated_timestamp.to_i < (@age * 60)
+      if current_time.to_i - last_updated_timestamp.to_i < @age
         update_health_list 'healthy'
       else
         update_health_list 'unhealthy'
